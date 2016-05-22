@@ -8,5 +8,8 @@
     "angular-mocks": "^1.5.5",
     "angular-route": "^1.5.5",
     "angular-sanitize": "^1.5.5"
+  },
+  "devDependencies": {
+    "node-sass": "^3.7.0"
   }
 }
