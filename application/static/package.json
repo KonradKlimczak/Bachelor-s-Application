@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build-css": "node-sass --include-path scss src/scss/style.scss dist/css/style.css"
+  },
   "dependencies": {
     "angular": "^1.5.5",
     "angular-animate": "^1.5.5",
@@ -8,5 +11,9 @@
     "angular-mocks": "^1.5.5",
     "angular-route": "^1.5.5",
     "angular-sanitize": "^1.5.5"
+  },
+  "devDependencies": {
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2"
   }
 }
