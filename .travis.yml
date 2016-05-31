@@ -1,0 +1,24 @@
+---
+language: node_js
+node_js:
+  - "stable"
+
+addons:
+  sauce_connect: true
+
+sudo: false
+
+cache:
+  directories:
+    - application/static/node_modules
+
+before_install:
+  - "cd application/static"
+  - "npm config set spin false"
+  - "npm install -g npm@^2"
+
+install:
+  - npm install
+
+script:
+  - npm test
