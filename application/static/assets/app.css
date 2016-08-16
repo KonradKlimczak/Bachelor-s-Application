@@ -129,3 +129,8 @@ span.name {
   font-size:1.1em;
   padding-left:5px;
 }
+
+
+.loading-circle {
+  height: 50vh;
+}
