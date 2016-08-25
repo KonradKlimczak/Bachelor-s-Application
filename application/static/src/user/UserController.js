@@ -1,7 +1,6 @@
-
 angular
   .module('starterApp')
-  .controller('UserController', function ($scope, $mdDialog, $http, UserService) {
+  .controller('UserController', function ($scope, $mdDialog, $http, UserService, PageService) {
     $scope.createUser = function (ev) {
       if (UserService.validateUser($scope.user) === false) {
         return;
@@ -41,6 +40,25 @@ angular
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
         );
+        PageService.getInfo();
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        alert('error')
+      });
+    };
+
+    $scope.logOut = function () {
+      $http({
+        method: 'POST',
+        url: '/api/log-out'
+      }).then(function successCallback(response) {
+        dialogObject = {}
+        dialogObject[response.data.status] = response.data.message;
+        $mdDialog.show(
+          $mdDialog[response.data.status]().locals(dialogObject)
+        );
+        PageService.getInfo();
       }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

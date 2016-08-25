@@ -1,0 +1,7 @@
+<div class="md-toolbar-tools">
+    <h1><a href="/">Bachelor-s-Application</a></h1>
+    <span flex></span>
+    <h6>Hello {{appUser.name}}</h6>
+<md-button aria-label="{{menuItem.label}}" ui-sref="{{menuItem.state}}" ng-disabled="{{menuItem.diable}}" ng-repeat="menuItem in menu">
+    {{menuItem.label}}
+</md-button>

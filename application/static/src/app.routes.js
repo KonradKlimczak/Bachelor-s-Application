@@ -8,9 +8,6 @@ angular.module('starterApp').config([
         views: {
           content: {
             templateUrl: '/static/src/page/view/main.html'
-          },
-          menu: {
-            templateUrl: '/static/src/page/view/guestMenu.html'
           }
         }
       })
@@ -19,9 +16,14 @@ angular.module('starterApp').config([
         views: {
           content: {
             templateUrl: '/static/src/user/view/logInView.html'
-          },
-          menu: {
-            templateUrl: '/static/src/page/view/guestMenu.html'
+          }
+        }
+      })
+      .state('logOut', {
+        url: '/log-out',
+        views: {
+          content: {
+            templateUrl: '/static/src/user/view/logOutView.html'
           }
         }
       })
@@ -30,20 +32,14 @@ angular.module('starterApp').config([
         views: {
           content: {
             templateUrl: '/static/src/user/view/createUserView.html'
-          },
-          menu: {
-            templateUrl: '/static/src/page/view/guestMenu.html'
           }
         }
       })
-      .state('app', {
-        url: '/',
+      .state('chat', {
+        url: '/chat',
         views: {
           content: {
-            templateUrl: '/static/src/page/view/main.html'
-          },
-          menu: {
-            templateUrl: '/static/src/page/view/userMenu.html'
+            templateUrl: '/static/src/chat/view/chatView.html'
           }
         }
       });

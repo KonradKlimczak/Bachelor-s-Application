@@ -39,12 +39,14 @@ def login_user(request):
     else:
         return JsonResponse({'status': 'error', 'message': 'Wrong user name of password.'})
 
+
+@require_http_methods(["POST"])
 def logout_user(request):
     '''
     logout function
     '''
     logout(request)
-    return JsonResponse({'success': True})
+    return JsonResponse({'status': 'success', 'message': 'You are successfully logged out.'})
 
 def get_page_info(request):
     '''

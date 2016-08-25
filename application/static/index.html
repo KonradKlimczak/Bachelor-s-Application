@@ -34,7 +34,7 @@
 
 <body layout="column" ng-controller="PageController" ng-cloak>
   {% csrf_token %} 
-  <md-toolbar layout="row" ui-view="menu">
+  <md-toolbar layout="row" ng-include="'/static/src/page/view/menu.html'">
     <div class="md-toolbar-tools">
       <h1><a href="/">Bachelor-s-Application</a></h1>
       <span flex></span>
@@ -44,7 +44,7 @@
 
   <div flex layout="row">
 
-    <md-content flex ui-view="content" layout-margin>
+    <md-content flex ui-view="content">
       <div layout="row" layout-align="center center" class="loading-circle">
           <md-progress-circular md-mode="indeterminate"></md-progress-circular>
       </div>
@@ -62,9 +62,11 @@
   <script src="/static/src/app.routes.js"></script>
   <script src="/static/src/dialog/warningDialog.js"></script>
   <script src="/static/src/dialog/successDialog.js"></script>
+  <script src="/static/src/page/PageService.js"></script>
   <script src="/static/src/page/PageController.js"></script>
   <script src="/static/src/user/UserService.js"></script>
   <script src="/static/src/user/UserController.js"></script>
+  <script src="/static/src/chat/ChatController.js"></script>
 
 </body>
 
