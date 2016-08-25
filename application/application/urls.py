@@ -18,8 +18,10 @@ from django.conf.urls import include
 from django.contrib import admin
 
 from page import urls as page_urls
+from message import urls as message_urls
 
 urlpatterns = [
     url(r'^', include(page_urls)),
+    url(r'^', include(message_urls)),
     url(r'^admin/', admin.site.urls),
 ]

@@ -36,7 +36,7 @@ angular.module('starterApp').config([
         }
       })
       .state('chat', {
-        url: '/chat',
+        url: '/chat/nancie',
         views: {
           content: {
             templateUrl: '/static/src/chat/view/chatView.html'

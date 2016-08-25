@@ -14,7 +14,7 @@ angular
         },
         url: '/api/create-user'
       }).then(function successCallback(response) {
-        dialogObject = {}
+        dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
@@ -22,7 +22,7 @@ angular
       }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        alert('error')
+        alert('error');
       });
     };
     
@@ -35,7 +35,7 @@ angular
         },
         url: '/api/log-in'
       }).then(function successCallback(response) {
-        dialogObject = {}
+        dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
@@ -44,7 +44,7 @@ angular
       }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        alert('error')
+        alert('error');
       });
     };
 
@@ -53,7 +53,7 @@ angular
         method: 'POST',
         url: '/api/log-out'
       }).then(function successCallback(response) {
-        dialogObject = {}
+        dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
@@ -62,7 +62,7 @@ angular
       }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        alert('error')
+        alert('error');
       });
     };
 

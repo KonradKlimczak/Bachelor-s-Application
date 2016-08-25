@@ -5,16 +5,33 @@
                 Chat > Nancie
             </md-subheader>
             <md-list>
-                <md-list-item class="md-3-line" ng-repeat="item in messages">
+                <md-list-item class="md-3-line" ng-repeat="message in messages">
                     <div class="md-list-item-text">
-                        <h3>{{item.what}}</h3>
-                        <h4>{{item.who}}</h4>
-                        <p>{{item.notes}}</p>
+                        <h3>{{message.fields.sent_at}}</h3>
+                        <h4>{{message.fields.sender[0]}}</h4>
+                        <p>{{message.fields.message}}</p>
                     </div>
                     <md-button class="md-secondary">Respond</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
+                <md-list-item ng-if="!messages.length">
+                    <div class="md-list-item-text">
+                        <p>Conversation has not started yet. Go ahead and write something!</p>
+                    </div>
+                </md-list-item>
             </md-list>
+            <div layout="row" flex>
+                <div flex="5"></div>
+                <form>
+                <md-input-container flex="80">
+                    <label>Your message</label>
+                    <input ng-model="userMessage.text" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
+                </md-input-container>
+                </form>
+            </div>
         </section>
     </md-content>
 </div>
