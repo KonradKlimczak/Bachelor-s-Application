@@ -7,11 +7,11 @@
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="message in messages">
                     <div class="md-list-item-text">
-                        <h3>{{message.fields.sent_at}}</h3>
-                        <h4>{{message.fields.sender[0]}}</h4>
+                        <h3>{{message.fields.sender[0]}}</h3>
+                        <h4>{{message.fields.sent_at | djangoTime}}</h4>
                         <p>{{message.fields.message}}</p>
                     </div>
-                    <md-button class="md-secondary">Respond</md-button>
+                    <md-button ng-if="message.fields.sender[0] == 'Nancie'" class="md-secondary">Report</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
                 <md-list-item ng-if="!messages.length">
@@ -20,18 +20,15 @@
                     </div>
                 </md-list-item>
             </md-list>
-            <div layout="row" flex>
-                <div flex="5"></div>
-                <form>
-                <md-input-container flex="80">
+            <form name="colorForm" ng-submit="sendMessage()">
+                <md-input-container>
                     <label>Your message</label>
-                    <input ng-model="userMessage.text" type="text">
+                    <input name="userMessage" ng-model="userMessage.text" type="text">
                 </md-input-container>
                 <md-input-container>
                     <md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
                 </md-input-container>
-                </form>
-            </div>
+            </form>
         </section>
     </md-content>
 </div>

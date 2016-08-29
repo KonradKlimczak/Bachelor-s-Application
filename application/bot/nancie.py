@@ -3,6 +3,9 @@ import time
 from django.contrib.auth.models import User
 
 from message.models import ChatMessage
+from chatterbot import ChatBot
+
+NANCIE = ChatBot('Nancie')
 
 def talk(user, message):
     thread.start_new_thread(ara_response, (user, message))
@@ -14,10 +17,11 @@ def ara_response(user, message):
     '''
     time.sleep(6)
     try:
+        response = NANCIE.get_response(message)
         ChatMessage.objects.create(
             sender=User.objects.get(username='Nancie'),
             receiver=user,
-            message=message,
+            message=response.text,
             is_read=True
         )
     except Exception as err:

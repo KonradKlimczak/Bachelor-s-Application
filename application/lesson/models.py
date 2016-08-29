@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from django.db import models
 
-class Lesson(models.Model):
+class Test(models.Model):
     '''
     Lesson model
     '''
@@ -23,3 +23,14 @@ class Question(models.Model):
     answer = models.CharField(max_length=30)
     category = models.CharField(max_length=10)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
+
+
+class Score(models.Model):
+    '''
+    User statistics about solving tests.
+    '''
+    tests_made = models.IntegerField()
+    tests_passed = models.IntegerField()
+    recent_test = models.ForeignKey(Test)
+    owner = models.ForeignKey(User)
+

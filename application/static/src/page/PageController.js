@@ -1,44 +1,44 @@
 angular
   .module('starterApp')
-  .controller('PageController', function ($scope, $rootScope, PageService) {
+  .controller('PageController', function ($rootScope, PageService) {
     var guestMenu = [{
-      state: 'logIn',
+      stateUrl: '/log-in',
       label: 'Log in'
     }, {
-      state: 'createUser',
+      stateUrl: '/create-user',
       label: 'Create accout'
     }, {
-      state: 'home',
+      stateUrl: null,
       label: 'About',
       diable: true
     }], userMenu = [{
-      state: 'chat',
+      stateUrl: '/chat/Nancie',
       label: 'Learn with Nancie'
     }, {
-      state: 'tests',
-      label: 'Solve tests',
-      diable: true
+      stateUrl: '/tests',
+      label: 'Solve tests'
     }, {
-      state: 'logOut',
+      stateUrl: '/log-out',
       label: 'Log Out'
     }];
 
   
-    $scope.appUser = {
+    $rootScope.appUser = {
       name: 'Guest',
       logged: false
     };
-    $scope.menu = guestMenu;
-    $rootScope.$on('userChange', function(event, userData) {
-      $scope.appUser.name = userData['user-name'] || 'Guest';
-      $scope.appUser.logged = userData['user-logged'];
-      if ($scope.appUser.logged) {
-        $scope.menu = userMenu;
+    $rootScope.menu = guestMenu;
+
+    $rootScope.$on('userChange', function (event, userData) {
+      $rootScope.appUser.name = userData['user-name'] || 'Guest';
+      $rootScope.appUser.logged = userData['user-logged'];
+      if ($rootScope.appUser.logged) {
+        $rootScope.menu = userMenu;
       } else {
-        $scope.menu = guestMenu;
+        $rootScope.menu = guestMenu;
       }
     });
-
+  
     PageService.getInfo();
 
   });

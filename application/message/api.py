@@ -57,7 +57,7 @@ def get_messages(request):
         count = messages.count()
         if limit > count:
             limit = count
-        messagesJson = serializers.serialize('json', messages[limit:], use_natural_foreign_keys=True)
+        messagesJson = serializers.serialize('json', messages[:limit], use_natural_foreign_keys=True)
         return HttpResponse(messagesJson, content_type="application/json")
     except Exception as err:
         return JsonResponse({'status': 'error', 'message': 'Message was not sent. ' + err.message})

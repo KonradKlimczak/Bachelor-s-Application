@@ -1,6 +1,6 @@
 angular
   .module('starterApp')
-  .controller('ChatController', function ($scope, $http, $interval) {
+  .controller('ChatController', function ($scope, $http, $interval, $stateParams) {
     $scope.loading = true;
     $scope.userMessage = {
       text: ''
@@ -10,7 +10,7 @@ angular
       $http({
         method: 'POST',
         data: {
-          'participants': [$scope.appUser.name, 'Nancie']
+          'participants': [$scope.appUser.name, $stateParams.user]
         },
         url: '/api/chat/get-messages'
       }).then(function successCallback(response) {
@@ -23,12 +23,12 @@ angular
       });
     }
     getMessages();
-    $interval(getMessages, 5000);
+    $interval(getMessages, 10000);
     $scope.sendMessage = function () {
       $http({
         method: 'POST',
         data: {
-          'receiver': 'Nancie',
+          'receiver': $stateParams.user,
           'message': $scope.userMessage.text
         },
         url: '/api/chat/send-message'
