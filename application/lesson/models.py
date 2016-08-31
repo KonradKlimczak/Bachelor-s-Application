@@ -29,8 +29,8 @@ class Score(models.Model):
     '''
     User statistics about solving tests.
     '''
-    tests_made = models.IntegerField()
-    tests_passed = models.IntegerField()
-    recent_test = models.ForeignKey(Test)
+    tests_taken = models.IntegerField(default=0)
+    tests_passed = models.IntegerField(default=0)
+    recent_test = models.ForeignKey(Test, blank=True, null=True)
     owner = models.ForeignKey(User)
 

@@ -2,7 +2,7 @@ angular
   .module('starterApp')
   .controller('PageController', function ($rootScope, PageService) {
     var guestMenu = [{
-      stateUrl: '/log-in',
+      stateUrl: '/sign-in',
       label: 'Log in'
     }, {
       stateUrl: '/create-user',
@@ -15,7 +15,7 @@ angular
       stateUrl: '/chat/Nancie',
       label: 'Learn with Nancie'
     }, {
-      stateUrl: '/tests',
+      stateUrl: '/lesson',
       label: 'Solve tests'
     }, {
       stateUrl: '/log-out',

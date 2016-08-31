@@ -1,12 +1,21 @@
-<div layout="row">
-  <md-card flex="50">
+<div layout="row" layout-wrap>
+  <md-card ng-if="appUser.logged" flex>
+    <md-card-content>
+      <h2>Test statistics</h2>
+      <p>Tests taken: 2</p>
+      <p>Tests passed: 2</p>
+      <p>Tests created: 0</p>
+      <p>Last test taken: "Habla hola!"</p>
+    </md-card-content>
+  </md-card>
+  <md-card flex>
     <md-card-content>
       <h2>Learn by practice</h2>
       <p>Learning with Nancie is the best way to have a real language expirience for beginners. You are able to have simple
         converstation with Nancie(virtual teacher) at very simple level.</p>
     </md-card-content>
   </md-card>
-  <md-card flex="50">
+  <md-card flex>
     <md-card-content>
       <h2>Solve tests</h2>
       <p>To strengthen your knowledge remember to periodically solve available tests.</p>

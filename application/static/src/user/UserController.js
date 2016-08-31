@@ -1,6 +1,6 @@
 angular
   .module('starterApp')
-  .controller('UserController', function ($scope, $mdDialog, $http, UserService, PageService) {
+  .controller('UserController', function ($scope, $mdDialog, $http, $location, $timeout, UserService, PageService) {
     $scope.createUser = function (ev) {
       if (UserService.validateUser($scope.user) === false) {
         return;
@@ -40,7 +40,12 @@ angular
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
         );
-        PageService.getInfo();
+        if (response.data.status === 'success') {
+          PageService.getInfo();
+          $timeout(function () {
+            $location.path('/');
+          }, 2000);
+        }
       }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

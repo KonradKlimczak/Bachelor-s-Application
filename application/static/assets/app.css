@@ -134,3 +134,8 @@ span.name {
 .loading-circle {
   height: 50vh;
 }
+
+.compressed-card{
+  padding-top: 0;
+  padding-bottom: 0;
+}

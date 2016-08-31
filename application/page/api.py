@@ -3,9 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.db import IntegrityError
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+
+from lesson.score import get_user_score
 
 @require_http_methods(["POST"])
 def register_user(request):
@@ -54,7 +55,8 @@ def get_page_info(request):
     '''
     page_info = {
         "user-name": request.user.username,
-        "user-logged": request.user.is_authenticated()
+        "user-logged": request.user.is_authenticated(),
+        "score": get_user_score(request.user)
     }
 
     return JsonResponse(page_info)

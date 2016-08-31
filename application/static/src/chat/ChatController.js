@@ -1,3 +1,4 @@
+var globalInterval;
 angular
   .module('starterApp')
   .controller('ChatController', function ($scope, $http, $interval, $stateParams) {
@@ -23,7 +24,7 @@ angular
       });
     }
     getMessages();
-    $interval(getMessages, 10000);
+    globalInterval = $interval(getMessages, 10000);
     $scope.sendMessage = function () {
       $http({
         method: 'POST',
