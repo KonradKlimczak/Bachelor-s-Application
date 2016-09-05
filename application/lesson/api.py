@@ -15,6 +15,10 @@ def get_all_lessons(_request):
     return HttpResponse(messagesJson, content_type="application/json")
 
 
+def get_lesson(request):
+    pass
+
+
 def get_user_score(request):
     '''
     Returns user information about lesson, he participated.

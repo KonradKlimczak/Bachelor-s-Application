@@ -34,7 +34,7 @@ angular.module('starterApp').config([
       .state('get-lesson', {
         url: '/lesson/:lesson',
         controller: 'GetLessonController',
-        templateUrl: '/static/src/lesson/view/lessonsView.html'
+        templateUrl: '/static/src/lesson/view/getLessonView.html'
       });
     $urlRouterProvider.otherwise('/');
   }

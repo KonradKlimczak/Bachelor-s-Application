@@ -1,5 +1,35 @@
-<div layout="column" ng-cloak>
-    <div ng-repeat="question in questions">
-        
+<div layout="row" ng-cloak>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="3">
+        <md-content layout-padding layout="column" flex>
+            <md-button ng-repeat="question in questions">{{question.name}}</md-button>
+        </md-content>
+    </md-sidenav>
+    <div layout="column" flex>
+        <div ng-repeat="question in questions" ng-init="compileSource(question)">
+            <md-card id="question-{{question.id}}">
+                <md-card-header>
+                    <md-card-header-text>
+                        <span class="md-title">{{question.name}}</span>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                    <ng-bind-html ng-bind-html="question.start"></ng-bind-html>{{question.userOutput}}
+                    <ng-bind-html ng-bind-html="question.end"></ng-bind-html>
+                </md-card-content>
+                <md-card-actions>
+
+                    <md-input-container data-ng-if="question.type == 'text'">
+                        Answer: <input name="userAnswer" type="text" ng-model="question.userAnswer" ng-change="animate(question)"
+                            aria-label="userAnswer">
+                    </md-input-container>
+                    <md-input-container data-ng-if="question.type == 'list'">
+                        <md-select ng-model="question.userAnswer" ng-change="animate(question)">
+                            <md-option ng-value="opt" ng-repeat="opt in question.answers">{{ opt }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-card-actions>
+            </md-card>
+
+        </div>
     </div>
 </div>
