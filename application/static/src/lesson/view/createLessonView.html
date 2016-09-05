@@ -27,10 +27,19 @@
         </h5>
         <md-card>
             <md-card-content layout="column">
-                <md-input-container md-no-float>
+                <md-input-container>
                     <label>Question name (optional)</label>
                     <input name="questionName{{$index}}" type="text" ng-model="question.name" placeholder="Name" aria-label="Name">
                 </md-input-container>
+                <md-divider></md-divider>
+                <p>Question type:</p>
+                <md-radio-group ng-model="question.type" layout="row">
+
+                    <md-radio-button value="list">List</md-radio-button>
+                    <md-radio-button value="fill">Fill</md-radio-button>
+
+                </md-radio-group>
+
                 <div layout="row">
                     <md-input-container flex="75">
                         <label>Source</label>
@@ -40,15 +49,37 @@
                         <md-button class="md-primary md-raised" ng-click="sourceExamples()">See source examples</md-button>
                     </md-input-container>
                 </div>
+
+                <md-input-container ng-if="question.type == 'fill'">
+                    <label>Answer</label>
+                    <input name="questionAnswer{{$index}}" type="text" ng-model="question.answer" placeholder="Correct Answer" aria-label="Answer">
+                </md-input-container>
+                <div ng-if="question.type == 'list'" layout="row">
+                    <div layout="column">
+                        <p> List of options: </p>
+                        <md-input-container ng-repeat="option in question.answers track by $index">
+                            <label>Option</label>
+                            <input type="text" ng-model="option" placeholder="Answer Option" aria-label="Answer">
+                        </md-input-container>
+                        <md-input-container>
+                            <md-button class="md-primary" ng-click="addAnswerOption(question)">Add new option</md-button>
+                        </md-input-container>
+                    </div>
+                    <md-input-container>
+                        <label>Answer</label>
+                        <input name="questionAnswer{{$index}}" type="text" ng-model="question.answer" placeholder="Correct Answer" aria-label="Answer">
+                    </md-input-container>
+                </div>
+
             </md-card-content>
         </md-card>
     </div>
     <div>
-    <md-input-container>
-        <md-button class="md-primary" ng-click="addQuestion()">Add new question</md-button>
-    </md-input-container>
-    <md-input-container>
-        <md-button class="md-primary md-raised" ng-click="addQuestion()">Save new test</md-button>
-    </md-input-container>
+        <md-input-container>
+            <md-button class="md-primary" ng-click="addQuestion()">Add new question</md-button>
+        </md-input-container>
+        <md-input-container>
+            <md-button class="md-primary md-raised" ng-click="createLesson()">Save new test</md-button>
+        </md-input-container>
     </div>
 </div>
