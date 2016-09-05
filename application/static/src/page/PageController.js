@@ -18,6 +18,9 @@ angular
       stateUrl: '/lesson',
       label: 'Solve tests'
     }, {
+      stateUrl: '/create-lesson',
+      label: 'Create test'
+    }, {
       stateUrl: '/log-out',
       label: 'Log Out'
     }];

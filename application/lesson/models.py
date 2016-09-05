@@ -23,6 +23,7 @@ class Question(models.Model):
     answer = models.CharField(max_length=30)
     category = models.CharField(max_length=10)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    answer_list = models.CharField(max_length=150, blank=True)
 
 
 class Score(models.Model):

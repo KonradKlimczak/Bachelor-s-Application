@@ -1,20 +1,19 @@
 angular
   .module('starterApp')
-  .controller('GetLessonController', function ($scope) {
+  .controller('GetLessonController', function ($scope, $stateParams, $http) {
     $scope.questions = [{
-      name: 'Greeting',
+      name: 'Greeting #1',
       source: '-Hola, __name__!<br/>-__answer__, Nancie!',
       answer: 'Hola',
       type: 'list',
       answers: ['Chao', 'Malo', 'Nancie', 'Hola', 'Silla']
     }, {
-      name: 'Greeting',
-      source: '-Hola, __name__!<br/>-__answer__, Nancie!',
-      answer: 'Hola',
-      type: 'list',
-      answers: ['Chao', 'Malo', 'Nancie', 'Hola', 'Silla']
+      name: 'Greeting #2',
+      source: '-Buenos dias, __name__!<br/>-Buenos __answer__, Nancie!',
+      answer: 'dias',
+      type: 'fill'
     }, {
-      name: 'Greeting',
+      name: 'Greeting #3',
       source: '-Hola, __name__!<br/>-__answer__, Nancie!',
       answer: 'Hola',
       type: 'list',
@@ -42,6 +41,7 @@ angular
       question.end = xstr[1];
       animate(question);
     }
+
 
     function submitTest() {
       var testResult = {

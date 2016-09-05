@@ -1,0 +1,54 @@
+<div layout-padding layout="column" flex>
+    <h3>
+        Test creator
+    </h3>
+    <p>
+        Welcome to test creator. Here you are able to create new tests for all users.<br/> Thanks for contributing! :)
+    </p>
+    <div layout="row" flex>
+        <md-input-container>
+            <label>Name of test</label>
+            <input type="text" ng-model="name" required>
+        </md-input-container>
+
+        <span flex></span>
+        <md-input-container>
+            <label>Category</label>
+            <input type="text" ng-model="category" required>
+        </md-input-container>
+    </div>
+    <md-input-container>
+        <label>Test description</label>
+        <textarea ng-model="description" ng-required></textarea>
+    </md-input-container>
+    <div ng-repeat="question in questions">
+        <h5>
+            Question {{$index}}
+        </h5>
+        <md-card>
+            <md-card-content layout="column">
+                <md-input-container md-no-float>
+                    <label>Question name (optional)</label>
+                    <input name="questionName{{$index}}" type="text" ng-model="question.name" placeholder="Name" aria-label="Name">
+                </md-input-container>
+                <div layout="row">
+                    <md-input-container flex="75">
+                        <label>Source</label>
+                        <textarea name="questionSource{{$index}}" ng-model="question.source" placeholder="Source" aria-label="Source" required></textarea>
+                    </md-input-container>
+                    <md-input-container>
+                        <md-button class="md-primary md-raised" ng-click="sourceExamples()">See source examples</md-button>
+                    </md-input-container>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div>
+    <md-input-container>
+        <md-button class="md-primary" ng-click="addQuestion()">Add new question</md-button>
+    </md-input-container>
+    <md-input-container>
+        <md-button class="md-primary md-raised" ng-click="addQuestion()">Save new test</md-button>
+    </md-input-container>
+    </div>
+</div>
