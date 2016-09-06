@@ -1,24 +1,7 @@
 angular
   .module('starterApp')
   .controller('GetLessonController', function ($scope, $stateParams, $http) {
-    $scope.questions = [{
-      name: 'Greeting #1',
-      source: '-Hola, __name__!<br/>-__answer__, Nancie!',
-      answer: 'Hola',
-      type: 'list',
-      answers: ['Chao', 'Malo', 'Nancie', 'Hola', 'Silla']
-    }, {
-      name: 'Greeting #2',
-      source: '-Buenos dias, __name__!<br/>-Buenos __answer__, Nancie!',
-      answer: 'dias',
-      type: 'fill'
-    }, {
-      name: 'Greeting #3',
-      source: '-Hola, __name__!<br/>-__answer__, Nancie!',
-      answer: 'Hola',
-      type: 'list',
-      answers: ['Chao', 'Malo', 'Nancie', 'Hola', 'Silla']
-    }];
+    getLesson();
 
     $scope.animate = animate;
     $scope.compileSource = compileSource;
@@ -42,7 +25,6 @@ angular
       animate(question);
     }
 
-
     function submitTest() {
       var testResult = {
         good: 0,
@@ -54,5 +36,23 @@ angular
         testResult.good += element.answer === element.userAnswer;
         testResult.bad += element.answer !== element.userAnswer;
       }
+    }
+
+    function getLesson() {
+      $http({
+        method: 'POST',
+        data: {
+          'id': $stateParams['lesson']
+        },
+        url: '/api/lesson/get-lesson'
+      }).then(function successCallback(response) {
+        $scope.name = response.data.name;
+        $scope.description = response.data.description;
+        $scope.questions = response.data.questions;
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        alert('error');
+      });
     }
   });
