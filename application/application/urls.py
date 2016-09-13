@@ -19,9 +19,11 @@ from django.contrib import admin
 
 from page import urls as page_urls
 from message import urls as message_urls
+from lesson import urls as lesson_urls
 
 urlpatterns = [
     url(r'^', include(page_urls)),
     url(r'^', include(message_urls)),
+    url(r'^', include(lesson_urls)),
     url(r'^admin/', admin.site.urls),
 ]

@@ -4,8 +4,12 @@ from django.contrib.auth.models import User
 
 from message.models import ChatMessage
 from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
 
 NANCIE = ChatBot('Nancie')
+NANCIE.set_trainer(ChatterBotCorpusTrainer)
+NANCIE.train("chatterbot.corpus.english")
+
 
 def talk(user, message):
     thread.start_new_thread(ara_response, (user, message))

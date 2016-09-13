@@ -3,17 +3,30 @@ from django.contrib.auth.models import User
 
 from django.db import models
 
-class Test(models.Model):
-    '''
-    Lesson model
-    '''
-    id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=30)
-    description = models.TextField()
-    creator = models.ForeignKey(User)
-    category = models.CharField(max_length=10)
+from django.db import models
+from django.db.models.fields.related import ManyToManyField
 
-class Question(models.Model):
+class PrintableModel(models.Model):
+    def __repr__(self):
+        return str(self.to_dict())
+
+    def to_dict(self):
+        opts = self._meta
+        data = {}
+        for f in opts.concrete_fields + opts.many_to_many:
+            if isinstance(f, ManyToManyField):
+                if self.pk is None:
+                    data[f.name] = []
+                else:
+                    data[f.name] = list(f.value_from_object(self).values_list('pk', flat=True))
+            else:
+                data[f.name] = f.value_from_object(self)
+        return data
+
+    class Meta:
+        abstract = True
+
+class Question(PrintableModel):
     '''
     Question model
     '''
@@ -22,11 +35,21 @@ class Question(models.Model):
     source = models.TextField()
     answer = models.CharField(max_length=30)
     category = models.CharField(max_length=10)
-    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    # test = models.ForeignKey(Test, on_delete=models.CASCADE)
     answer_list = models.CharField(max_length=150, blank=True)
 
+class Test(PrintableModel):
+    '''
+    Lesson model
+    '''
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=30)
+    description = models.TextField()
+    creator = models.ForeignKey(User)
+    category = models.CharField(max_length=10)
+    questions = models.ManyToManyField(Question)
 
-class Score(models.Model):
+class Score(PrintableModel):
     '''
     User statistics about solving tests.
     '''

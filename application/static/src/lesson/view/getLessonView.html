@@ -24,11 +24,11 @@
                     <ng-bind-html ng-bind-html="question.end"></ng-bind-html>
                 </md-card-content>
                 <md-card-actions data-ng-if="!question.submitted">
-                    <md-input-container data-ng-if="question.type == 'fill'">
+                    <md-input-container data-ng-if="question.category == 'fill'">
                         <input placeholder="Answer" name="userAnswer" type="text" ng-model="question.userAnswer" ng-change="animate(question)"
                             aria-label="userAnswer">
                     </md-input-container>
-                    <md-input-container data-ng-if="question.type == 'list'">
+                    <md-input-container data-ng-if="question.category == 'list'">
                         <md-select ng-model="question.userAnswer" ng-change="animate(question)">
                             <md-option ng-value="opt" ng-repeat="opt in question.answers">{{ opt }}</md-option>
                         </md-select>
