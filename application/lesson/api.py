@@ -1,24 +1,24 @@
-
 import json
-from lesson.models import Test
-from lesson.models import Question
-from lesson.models import Score
 
 from django.http import JsonResponse
 from django.http import HttpResponse
 from django.core import serializers
 from django.forms.models import model_to_dict
 
+from lesson.models import Test
+from lesson.models import Question
+from lesson.models import Score
+from lesson.lesson_to_json import list_to_json
 
 def get_all_lessons(_request):
     '''
     Returns lessons available
     '''
 
-    tests = Test.object.all()
-    
-    messagesJson = serializers.serialize('json', tests, use_natural_foreign_keys=True)
-    return HttpResponse(messagesJson, content_type="application/json")
+    tests = Test.objects.all()
+    tests_in_json = list_to_json(tests)
+
+    return JsonResponse({'list': tests_in_json})
 
 from django.db.models.fields.related import ManyToManyField
 
@@ -53,8 +53,8 @@ def get_user_score(request):
     Returns user information about lesson, he participated.
     '''
 
-    user_score = Score.object.get(owner=request.user)
-    
+    user_score = Score.objects.get(owner=request.user)
+
     messagesJson = serializers.serialize('json', user_score, use_natural_foreign_keys=True)
     return HttpResponse(messagesJson, content_type="application/json")
 

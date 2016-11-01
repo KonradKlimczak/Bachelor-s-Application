@@ -40,6 +40,8 @@ angular
       } else {
         $rootScope.menu = guestMenu;
       }
+
+      $rootScope.appUser.score = userData['score'];
     });
   
     PageService.getInfo();

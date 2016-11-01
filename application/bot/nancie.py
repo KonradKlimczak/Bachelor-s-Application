@@ -4,11 +4,12 @@ from django.contrib.auth.models import User
 
 from message.models import ChatMessage
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot.trainers import ListTrainer
+
 
 NANCIE = ChatBot('Nancie')
-NANCIE.set_trainer(ChatterBotCorpusTrainer)
-NANCIE.train("chatterbot.corpus.english")
+
+NANCIE.set_trainer(ListTrainer)
 
 
 def talk(user, message):
@@ -19,7 +20,7 @@ def ara_response(user, message):
     '''
     Response user with exactly same message.
     '''
-    time.sleep(6)
+    time.sleep(1)
     try:
         response = NANCIE.get_response(message)
         ChatMessage.objects.create(
@@ -28,5 +29,9 @@ def ara_response(user, message):
             message=response.text,
             is_read=True
         )
+        export_converstation()
     except Exception as err:
         print err
+
+def export_converstation():
+    NANCIE.trainer.export_for_training('./export.json')

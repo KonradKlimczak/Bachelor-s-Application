@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('lessonApp')
   .controller('CreateLessonController', function ($scope, $http) {
     $scope.questions = [];
     addQuestion();

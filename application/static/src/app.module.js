@@ -1,5 +1,5 @@
 angular
-    .module('starterApp', ['ngSanitize', 'ngMaterial', 'ui.router'])
+    .module('starterApp', ['lessonApp', 'ngSanitize', 'ngMaterial', 'ui.router'])
     .config(function ($mdThemingProvider, $mdIconProvider, $httpProvider) {
 
         $mdIconProvider

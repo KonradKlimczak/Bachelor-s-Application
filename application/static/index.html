@@ -33,7 +33,7 @@
 </head>
 
 <body layout="column" ng-controller="PageController" ng-cloak>
-  {% csrf_token %} 
+  {% csrf_token %}
   <md-toolbar layout="row" ng-include="'/static/src/page/view/menu.html'">
     <div class="md-toolbar-tools">
       <h1><a href="/">Bachelor-s-Application</a></h1>
@@ -51,7 +51,6 @@
     </md-content>
 
   </div>
-
   <script src="/static/node_modules/angular/angular.js"></script>
   <script src="/static/bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="/static/node_modules/angular-animate/angular-animate.js"></script>
@@ -60,6 +59,14 @@
   <script src="/static/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 
   <script src="/static/src/string.prototype.js"></script>
+
+  <script src="/static/src/lesson/lesson.module.js"></script>
+  <script src="/static/src/lesson/lesson.routes.js"></script>
+  <script src="/static/src/lesson/LessonService.js"></script>
+  <script src="/static/src/lesson/lessonList/LessonController.js"></script>
+  <script src="/static/src/lesson/CreateLessonController.js"></script>
+  <script src="/static/src/lesson/GetLessonController.js"></script>
+
   <script src="/static/src/app.module.js"></script>
   <script src="/static/src/app.routes.js"></script>
   <script src="/static/src/dialog/warningDialog.js"></script>
@@ -70,9 +77,6 @@
   <script src="/static/src/user/UserService.js"></script>
   <script src="/static/src/user/UserController.js"></script>
   <script src="/static/src/chat/ChatController.js"></script>
-  <script src="/static/src/lesson/LessonController.js"></script>
-  <script src="/static/src/lesson/CreateLessonController.js"></script>
-  <script src="/static/src/lesson/GetLessonController.js"></script>
 
 </body>
 

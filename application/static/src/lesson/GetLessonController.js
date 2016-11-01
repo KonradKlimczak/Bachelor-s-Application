@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('lessonApp')
   .controller('GetLessonController', function ($scope, $stateParams, $http) {
     getLesson();
 

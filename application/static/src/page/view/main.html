@@ -2,10 +2,10 @@
   <md-card ng-if="appUser.logged" flex>
     <md-card-content>
       <h2>Test statistics</h2>
-      <p>Tests taken: 2</p>
-      <p>Tests passed: 2</p>
+      <p>Tests taken: {{ appUser.score.tests_taken }}</p>
+      <p>Tests passed: {{ appUser.score.tests_passed }}</p>
       <p>Tests created: 0</p>
-      <p>Last test taken: "Habla hola!"</p>
+      <p>Last test taken: {{ appUser.score.recent_test }}</p>
     </md-card-content>
   </md-card>
   <md-card flex>

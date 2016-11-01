@@ -7,7 +7,8 @@
         }
     },
     "rules": {
-        "semi": 2
+        "semi": 2,
+        "no-undef": "error"
     },
     "env": {
         "browser": true
