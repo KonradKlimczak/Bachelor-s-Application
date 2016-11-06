@@ -42,13 +42,11 @@
 		</div>
 	</md-toolbar>
 
-	<md-content layout="row" layout-align="center start">
-		<div flex-gt-sm="80" ui-view>
-			<div layout="row" layout-align="center center" class="loading-circle">
-				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
-			</div>
+	<div ui-view>
+		<div layout="row" layout-align="center center" class="loading-circle">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 		</div>
-	</md-content>
+	</div>
 
 	<script src="/static/node_modules/angular/angular.js"></script>
 	<script src="/static/bower_components/angular-sanitize/angular-sanitize.js"></script>

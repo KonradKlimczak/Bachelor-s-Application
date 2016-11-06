@@ -1,10 +1,9 @@
-<div ng-controller="ChatController" layout="column" flex layout-fill ng-cloak>
-
-	<md-subheader>
-		Chat > Nancie
-	</md-subheader>
-	<md-content>
-		<md-list>
+<md-content>
+	<section>
+		<md-subheader>
+			Chat > Nancie
+		</md-subheader>
+		<md-list layout-padding>
 			<md-list-item class="md-3-line" ng-repeat="message in messages">
 				<div class="md-list-item-text">
 					<h3>{{message.fields.sender[0]}}</h3>
@@ -20,14 +19,14 @@
 				</div>
 			</md-list-item>
 		</md-list>
-	</md-content>
-	<form name="colorForm" ng-submit="sendMessage()">
-		<md-input-container>
-			<label>Your message</label>
-			<input name="userMessage" ng-model="userMessage.text" type="text">
-		</md-input-container>
-		<md-input-container>
-			<md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
-		</md-input-container>
-	</form>
-</div>
+	</section>
+</md-content>
+<form name="colorForm" ng-submit="sendMessage()">
+	<md-input-container>
+		<label>Your message</label>
+		<input name="userMessage" ng-model="userMessage.text" type="text">
+	</md-input-container>
+	<md-input-container>
+		<md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
+	</md-input-container>
+</form>

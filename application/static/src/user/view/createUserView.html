@@ -1,5 +1,5 @@
-<div ng-controller="UserController" layout="row" layout-padding layout-align="center start" ng-cloak>
-  <div layout="column" flex="auto">
+<div layout="row" layout-align="space-around center" ng-cloak>
+  <div layout="column">
     <md-input-container class="md-block">
       <md-icon md-font-set="material-icons"> account_box </md-icon>
       <input ng-model="user.userName" type="text" placeholder="User name" ng-required="true">
@@ -20,7 +20,7 @@
       <md-button id="button-id" class="md-raised" aria-label="Confirm" ng-click="createUser()"> Confirm </md-button>
     </md-input-container>
   </div>
-  <div layout="column" layout-align="start center" flex="auto">
+  <div layout="column" layout-align="start center">
     <p>
       Or log in if you already have a account.
     </p>

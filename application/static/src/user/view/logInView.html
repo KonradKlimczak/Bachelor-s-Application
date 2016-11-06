@@ -1,5 +1,5 @@
-<div ng-controller="UserController" layout="column" layout-padding flex="50" ng-cloak>
-  <md-content class="md-no-momentum">
+<div layout="row" layout-align="center center" ng-cloak>
+  <div flex="100" flex-gt-sm="40" layout="column">
     <md-input-container class="md-block">
       <md-icon md-font-set="material-icons"> account_box </md-icon>
       <input ng-model="user.userName" type="text" placeholder="User name" ng-required="true">
@@ -11,5 +11,5 @@
     <md-input-container md-no-float class="md-block">
       <md-button id="button-id" class="md-raised" aria-label="Confirm" ng-click="logIn()"> Log In </md-button>
     </md-input-container>
-  </md-content>
+  </div>
 </div>

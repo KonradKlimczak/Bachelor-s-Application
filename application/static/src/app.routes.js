@@ -9,7 +9,8 @@ angular.module('starterApp').config([
       })
       .state('logIn', {
         url: '/sign-in',
-        templateUrl: '/static/src/user/view/logInView.html'
+        templateUrl: '/static/src/user/view/logInView.html',
+        controller: 'UserController'
       })
       .state('logOut', {
         url: '/log-out',
@@ -17,11 +18,13 @@ angular.module('starterApp').config([
       })
       .state('createUser', {
         url: '/create-user',
-        templateUrl: '/static/src/user/view/createUserView.html'
+        templateUrl: '/static/src/user/view/createUserView.html',
+        controller: 'UserController'
       })
       .state('chat', {
         url: '/chat/:user',
         templateUrl: '/static/src/chat/view/chatView.html',
+        controller: 'ChatController',
         onExit: function($interval){
           $interval.cancel(globalInterval);
         }
