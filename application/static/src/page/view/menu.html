@@ -1,8 +1,28 @@
-<div class="md-toolbar-tools">
+<md-toolbar layout="row">
+  <div class="md-toolbar-tools">
+    <div hide-gt-sm>
+      <md-button class="md-fab md-mini" aria-label="Menu">
+        <md-icon md-font-set="material-icons" ng-click="openLeftMenu()"> menu </md-icon>
+      </md-button>
+    </div>
     <h1><a href="/">Bachelor-s-Application</a></h1>
     <span flex></span>
     <h6>Hello {{appUser.name}}</h6>
-    <md-button aria-label="{{menuItem.label}}" ng-href="{{menuItem.stateUrl}}" ng-disabled="{{menuItem.diable}}" ng-repeat="menuItem in menu">
+    <div hide show-gt-sm>
+      <md-button aria-label="{{menuItem.label}}" ng-href="{{menuItem.stateUrl}}" ng-disabled="{{menuItem.diable}}" ng-repeat="menuItem in menu">
         {{menuItem.label}}
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Menu</h1>
+  </md-toolbar>
+  <md-content layout-padding layout="column">
+    <md-button aria-label="{{menuItem.label}}" ng-href="{{menuItem.stateUrl}}" ng-disabled="{{menuItem.diable}}" ng-repeat="menuItem in menu">
+      {{menuItem.label}}
     </md-button>
-</div>
+  </md-content>
+
+</md-sidenav>

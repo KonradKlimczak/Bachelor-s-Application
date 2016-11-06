@@ -34,13 +34,16 @@
 
 <body layout="column" ng-controller="PageController" ng-cloak>
 	{% csrf_token %}
-	<md-toolbar layout="row" ng-include="'/static/src/page/view/menu.html'">
-		<div class="md-toolbar-tools">
-			<h1><a href="/">Bachelor-s-Application</a></h1>
-			<span flex></span>
-			<h6>Hello Guest</h6>
-		</div>
-	</md-toolbar>
+	<div ng-include="'/static/src/page/view/menu.html'">
+		<md-toolbar layout="row">
+			<div class="md-toolbar-tools">
+				<h1><a href="/">Bachelor-s-Application</a></h1>
+				<span flex></span>
+				<h6>Hello Guest</h6>
+			</div>
+		</md-toolbar>
+	</div>
+
 
 	<div ui-view>
 		<div layout="row" layout-align="center center" class="loading-circle">

@@ -1,6 +1,6 @@
 angular
   .module('starterApp')
-  .controller('PageController', function ($rootScope, PageService) {
+  .controller('PageController', function ($scope, $rootScope, PageService, $mdSidenav) {
     var guestMenu = [{
       stateUrl: '/sign-in',
       label: 'Log in'
@@ -25,12 +25,13 @@ angular
       label: 'Log Out'
     }];
 
-  
+
     $rootScope.appUser = {
       name: 'Guest',
       logged: false
     };
     $rootScope.menu = guestMenu;
+    $scope.openLeftMenu = openLeftMenu;
 
     $rootScope.$on('userChange', function (event, userData) {
       $rootScope.appUser.name = userData['user-name'] || 'Guest';
@@ -43,7 +44,10 @@ angular
 
       $rootScope.appUser.score = userData['score'];
     });
-  
+
     PageService.getInfo();
 
+    function openLeftMenu() {
+      $mdSidenav('left').toggle();
+    }
   });
