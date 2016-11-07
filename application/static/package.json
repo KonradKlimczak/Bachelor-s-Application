@@ -1,10 +1,11 @@
 {
   "name": "bachelor-frontend",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A starter project for bachelor work",
   "scripts": {
     "prestart": "npm update",
+    "test": "karma start karma.conf.js",
     "start": "http-server -a localhost -p 8000"
   },
   "peerDependencies": {
@@ -25,6 +26,11 @@
     "angular-mocks": "^1.4.9",
     "eslint": "^3.0.1",
     "eslint-config-google": "^0.6.0",
+    "jasmine": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-junit-reporter": "^1.1.0",
     "live-server": "^0.9.1"
   }
 }
