@@ -2,5 +2,8 @@
 {
     "python.linting.pylintArgs": [
         "--load-plugins", "pylint_django"
-    ]
+    ],
+    "files.exclude": {
+        "**/*.pyc": {"when": "$(basename).py"}
+    }
 }

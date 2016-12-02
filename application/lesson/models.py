@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 from django.db import models
 
-from django.db import models
 from django.db.models.fields.related import ManyToManyField
 
 class PrintableModel(models.Model):
@@ -13,14 +12,14 @@ class PrintableModel(models.Model):
     def to_dict(self):
         opts = self._meta
         data = {}
-        for f in opts.concrete_fields + opts.many_to_many:
-            if isinstance(f, ManyToManyField):
+        for field in opts.concrete_fields + opts.many_to_many:
+            if isinstance(field, ManyToManyField):
                 if self.pk is None:
-                    data[f.name] = []
+                    data[field.name] = []
                 else:
-                    data[f.name] = list(f.value_from_object(self).values_list('pk', flat=True))
+                    data[field.name] = list(field.value_from_object(self).values_list('pk', flat=True))
             else:
-                data[f.name] = f.value_from_object(self)
+                data[field.name] = field.value_from_object(self)
         return data
 
     class Meta:
