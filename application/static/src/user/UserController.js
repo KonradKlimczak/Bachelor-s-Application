@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('bachelorsApp')
   .controller('UserController', function ($scope, $mdDialog, $http, $location, $timeout, UserService, PageService) {
     $scope.createUser = function (ev) {
       if (UserService.validateUser($scope.user) === false) {

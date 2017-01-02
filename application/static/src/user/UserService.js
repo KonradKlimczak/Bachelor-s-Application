@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('bachelorsApp')
   .service('UserService', function ($mdDialog) {
     this.validateUser = validateUser
 

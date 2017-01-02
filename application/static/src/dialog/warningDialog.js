@@ -1,4 +1,4 @@
-angular.module('starterApp').config([
+angular.module('bachelorsApp').config([
   '$mdDialogProvider',
   function ($mdDialogProvider) {
     $mdDialogProvider.addPreset('error', {

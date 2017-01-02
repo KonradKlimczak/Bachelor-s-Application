@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('bachelorsApp')
   .service('PageService', ['$rootScope', '$http', '$location', function ($rootScope, $http, $location) {
     this.getInfo = function () {
       return $http({

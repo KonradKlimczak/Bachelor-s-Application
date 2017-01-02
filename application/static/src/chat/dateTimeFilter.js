@@ -1,5 +1,5 @@
 angular
-    .module('starterApp').filter('djangoTime', function () {
+    .module('bachelorsApp').filter('djangoTime', function () {
         return function (input) {
             input = input || '';
             var date = new Date(input);

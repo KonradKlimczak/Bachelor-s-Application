@@ -1,5 +1,5 @@
 angular
-  .module('starterApp')
+  .module('bachelorsApp')
   .controller('PageController', function ($scope, $rootScope, PageService, $mdSidenav) {
     var guestMenu = [{
       stateUrl: '/sign-in',

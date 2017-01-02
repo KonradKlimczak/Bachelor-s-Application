@@ -1,6 +1,6 @@
 var globalInterval;
 angular
-  .module('starterApp')
+  .module('bachelorsApp')
   .controller('ChatController', function ($scope, $http, $interval, $stateParams) {
     $scope.loading = true;
     $scope.userMessage = {

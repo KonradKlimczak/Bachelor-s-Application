@@ -1,4 +1,4 @@
-angular.module('starterApp').config([
+angular.module('bachelorsApp').config([
   '$stateProvider', '$locationProvider', '$urlRouterProvider',
   function($stateProvider, $locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
