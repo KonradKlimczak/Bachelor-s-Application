@@ -1,3 +1,7 @@
+'''
+Django views returning json response
+'''
+
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -7,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
 from lesson.score import get_user_score
+from lesson.score import count_lessons_created_by_user
 
 @require_http_methods(["POST"])
 def register_user(request):
@@ -19,7 +24,10 @@ def register_user(request):
             post_object['user-name'], post_object['email'], post_object['password']
         )
         user.save()
-        return JsonResponse({'status': 'success', 'message': 'User account was created successfully.'})
+        return JsonResponse({
+            'status': 'success',
+            'message': 'User account was created successfully.'
+        })
     except IntegrityError:
         return JsonResponse({'status': 'error', 'message': 'This user name is already taken.'})
 
@@ -56,7 +64,8 @@ def get_page_info(request):
     page_info = {
         "user-name": request.user.username,
         "user-logged": request.user.is_authenticated(),
-        "score": get_user_score(request.user)
+        "score": get_user_score(request.user),
+        "test-created": count_lessons_created_by_user(request.user)
     }
 
     return JsonResponse(page_info)

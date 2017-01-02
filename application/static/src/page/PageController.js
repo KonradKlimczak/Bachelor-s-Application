@@ -43,6 +43,7 @@ angular
       }
 
       $rootScope.appUser.score = userData['score'];
+      $rootScope.appUser.testsCreated = userData['test-created'];
     });
 
     PageService.getInfo();

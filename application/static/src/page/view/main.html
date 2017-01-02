@@ -1,12 +1,26 @@
 <div layout="row" layout-align="center center">
   <div flex-gt-sm="80" layout="row" layout-xs="column">
     <md-card ng-if="appUser.logged" flex>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Tests statistic</span>
+        </md-card-title-text>
+      </md-card-title>
       <md-card-content>
-        <h2>Test statistics</h2>
         <p>Tests taken: {{ appUser.score.tests_taken }}</p>
         <p>Tests passed: {{ appUser.score.tests_passed }}</p>
-        <p>Tests created: 0</p>
         <p>Last test taken: {{ appUser.score.recent_test }}</p>
+      </md-card-content>
+    </md-card>
+    <md-card ng-if="appUser.logged">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Your tests</span>
+          <span class="md-subhead">Statistics about tests you have created</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>Tests created: {{ appUser.testsCreated }}</p>
       </md-card-content>
     </md-card>
     <md-card flex>
