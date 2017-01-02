@@ -25,5 +25,7 @@ def count_lessons_created_by_user(user):
     '''
     Returns number of lessons created by given user.
     '''
+    if not user.is_authenticated():
+        return 0
 
     return user.test_set.all().count()

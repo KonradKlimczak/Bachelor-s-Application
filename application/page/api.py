@@ -6,6 +6,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.db import IntegrityError
+from django.db import OperationalError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
@@ -30,6 +31,8 @@ def register_user(request):
         })
     except IntegrityError:
         return JsonResponse({'status': 'error', 'message': 'This user name is already taken.'})
+    except OperationalError:
+        return JsonResponse({'status': 'error', 'message': 'Database Error. Table user is missing.'})
 
 def login_user(request):
     '''
@@ -38,8 +41,13 @@ def login_user(request):
     post_object = json.loads(request.body)
     username = post_object['user-name']
     password = post_object['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
+    user = None
+    try:
+        user = authenticate(username=username, password=password)
+    except OperationalError:
+        return JsonResponse({'status': 'error', 'message': 'Database Error. Table user is missing.'})
+
+    if user:
         if user.is_active:
             login(request, user)
             return JsonResponse({'status': 'success', 'message': 'You are logged in.'})
