@@ -21,6 +21,9 @@ angular
       stateUrl: '/create-lesson',
       label: 'Create test'
     }, {
+      stateUrl: '/settings',
+      label: 'Settings'
+    }, {
       stateUrl: '/log-out',
       label: 'Log Out'
     }];
