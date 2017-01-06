@@ -5,16 +5,8 @@ angular
       if (UserService.validateUser($scope.user) === false) {
         return;
       }
-      $http({
-        method: 'POST',
-        data: {
-          'user-name': $scope.user.userName,
-          'email': $scope.user.email,
-          'password': $scope.user.password
-        },
-        url: '/api/create-user'
-      }).then(function successCallback(response) {
-        dialogObject = {};
+      UserService.createUser($scope.user).then(function successCallback(response) {
+        var dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
@@ -27,15 +19,8 @@ angular
     };
     
     $scope.logIn = function (ev) {
-      $http({
-        method: 'POST',
-        data: {
-          'user-name': $scope.user.userName,
-          'password': $scope.user.password
-        },
-        url: '/api/log-in'
-      }).then(function successCallback(response) {
-        dialogObject = {};
+      UserService.logIn($scope.user).then(function successCallback(response) {
+        var dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
@@ -54,11 +39,8 @@ angular
     };
 
     $scope.logOut = function () {
-      $http({
-        method: 'POST',
-        url: '/api/log-out'
-      }).then(function successCallback(response) {
-        dialogObject = {};
+      UserService.logOut().then(function successCallback(response) {
+        var dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)

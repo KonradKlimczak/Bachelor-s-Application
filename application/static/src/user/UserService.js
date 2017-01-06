@@ -1,7 +1,40 @@
 angular
   .module('bachelorsApp')
-  .service('UserService', function ($mdDialog) {
+  .service('UserService', function ($http, $mdDialog) {
+    this.createUser = createUser;
+    this.logIn = logIn;
+    this.logOut = logOut;
     this.validateUser = validateUser;
+
+    function createUser(user) {
+      return $http({
+        method: 'POST',
+        data: {
+          'user-name': user.userName,
+          'email': user.email,
+          'password': user.password
+        },
+        url: '/api/create-user'
+      });
+    }
+
+    function logIn(user) {
+      return $http({
+        method: 'POST',
+        data: {
+          'user-name': user.userName,
+          'password': user.password
+        },
+        url: '/api/log-in'
+      });
+    }
+
+    function logOut() {
+      return $http({
+        method: 'POST',
+        url: '/api/log-out'
+      });
+    }
 
     function validateUser(user) {
       var result;

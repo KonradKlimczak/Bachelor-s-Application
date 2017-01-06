@@ -1,32 +1,34 @@
 <md-content>
-	<section>
-		<md-subheader>
-			Chat > Nancie
-		</md-subheader>
-		<md-list layout-padding>
-			<md-list-item class="md-3-line" ng-repeat="message in messages">
-				<div class="md-list-item-text">
-					<h3>{{message.fields.sender[0]}}</h3>
-					<h4>{{message.fields.sent_at | djangoTime}}</h4>
-					<p>{{message.fields.message}}</p>
-				</div>
-				<md-button ng-if="message.fields.sender[0] == 'Nancie'" class="md-secondary">Report</md-button>
-				<md-divider ng-if="!$last"></md-divider>
-			</md-list-item>
-			<md-list-item ng-if="!messages.length">
-				<div class="md-list-item-text">
-					<p>Conversation has not started yet. Go ahead and write something!</p>
-				</div>
-			</md-list-item>
-		</md-list>
-	</section>
+	<div layout="column" flex-offset-gt-sm="20" flex-gt-sm="60">
+		<section>
+			<md-subheader>
+				Chat > Nancie
+			</md-subheader>
+			<md-list layout-padding>
+				<md-list-item class="md-3-line" ng-repeat="message in messages" ng-class="{'chat-messge-recieved': message.fields.sender[0] == appUser.name}">
+					<div class="md-list-item-text">
+						<h3>{{message.fields.sender[0]}}</h3>
+						<h4>{{message.fields.sent_at | djangoTime}}</h4>
+						<p>{{message.fields.message}}</p>
+					</div>
+					<md-button ng-if="message.fields.sender[0] == 'Nancie'" class="md-secondary">Report</md-button>
+					<md-divider ng-if="!$last"></md-divider>
+				</md-list-item>
+				<md-list-item ng-if="!messages.length">
+					<div class="md-list-item-text">
+						<p>Conversation has not started yet. Go ahead and write something!</p>
+					</div>
+				</md-list-item>
+			</md-list>
+		</section>
+		<form name="colorForm" ng-submit="sendMessage()" layout="row">
+			<md-input-container flex="80">
+				<label>Your message</label>
+				<input name="userMessage" ng-model="userMessage.text" type="text">
+			</md-input-container>
+			<md-input-container flex="20">
+				<md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
+			</md-input-container>
+		</form>
+	</div>
 </md-content>
-<form name="colorForm" ng-submit="sendMessage()">
-	<md-input-container>
-		<label>Your message</label>
-		<input name="userMessage" ng-model="userMessage.text" type="text">
-	</md-input-container>
-	<md-input-container>
-		<md-button class="md-raised" ng-click="sendMessage()">Send</md-button>
-	</md-input-container>
-</form>
