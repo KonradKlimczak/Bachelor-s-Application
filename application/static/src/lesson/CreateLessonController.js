@@ -1,6 +1,6 @@
 angular
   .module('lessonApp')
-  .controller('CreateLessonController', function ($scope, $http) {
+  .controller('CreateLessonController', function ($scope, $http, $mdDialog) {
     $scope.questions = [];
     addQuestion();
     $scope.createLesson = createLesson;
@@ -18,7 +18,7 @@ angular
         },
         url: '/api/lesson/create-lesson'
       }).then(function successCallback(response) {
-        dialogObject = {};
+        var dialogObject = {};
         dialogObject[response.data.status] = response.data.message;
         $mdDialog.show(
           $mdDialog[response.data.status]().locals(dialogObject)
